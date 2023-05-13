@@ -3,30 +3,64 @@
 <body>
   <main>
     <a href="/" class="back-btn text-light">Back</a>
-
     <div class="main-section-country">
-      <div class="main-section-country-flag-img">l</div>
-      <div class="main-section-country-text">
-        <div class="text-section-1">
-          <h2 class="text-light">Belgium</h2>
-          <p class="text-light">Native Name: Belgie</p>
-          <p class="text-light">Population: 11,2234,45</p>
-          <p class="text-light">Region: Europe</p>
-          <p class="text-light">Sub Region: Western Europe</p>
-          <p class="text-light">Capital: Brussels</p>
-        </div>
-        <div class="text-section-2">
-          <p class="text-light">Top-level-Domain: .be</p>
-          <p class="text-light">Currencies: Euro</p>
-          <p class="text-light">Languages: Dutch, French, German</p>
+      <% country.forEach((country) => { %>
+      <div class="main-section-country-img-container">
+        <img
+          class="main-section-country-img"
+          src="<%= country.flags.png %>"
+          alt="country-img"
+        />
+      </div>
+      <div class="main-section-text-content">
+        <h2 class="text-light"><%= country.name %></h2>
+        <div class="text-content">
+          <div>
+            <p class="text-light">
+              Native Names: <%= country.nativeName || 'null' %>
+            </p>
+            <p class="text-light">
+              Population: <%= country.population || 'null' %>
+            </p>
+            <p class="text-light">Region: <%= country.region || 'null' %></p>
+            <p class="text-light">
+              Sub Region: <%= country.subregion || 'null' %>
+            </p>
+            <p class="text-light">Capital: <%= country.capital || 'null' %></p>
+          </div>
+          <div>
+            <p class="text-light">
+              Top Level Domain: <%= country.topLevelDomain || 'null' %>
+            </p>
+            <p class="text-light">
+              Currencies: <%= country.currencies && country.currencies.length >
+              0 ? country.currencies[0].name : 'null' %>
+            </p>
+            <p class="text-light">
+              Languages: <%= country.languages && country.languages.length > 0 ?
+              country.languages[0].name : 'null' %>
+            </p>
+          </div>
+          <div class="border-country-lg">
+            <p class="text-light">
+              Border Countries: <% if (country.borders && country.borders.length
+              > 0) { country.borders.forEach((border) => { %>
+              <span>
+                <a class="border-country-link" href="#"><%= border %></a>
+              </span>
+              <% }); } else { %> null <% } %>
+            </p>
+          </div>
+          <div class="border-country-mobile">
+            <p class="text-light">Border Countries</p>
+            <% if (country.borders && country.borders.length > 0) {
+            country.borders.forEach((border) => { %>
+            <a class="border-country-link" href="#"><%= border %></a>
+            <% }); } else { %> null <% } %>
+          </div>
         </div>
       </div>
-      <div class="main-section-border-country">
-        <h5 class="text-light">Border Countries</h5>
-        <p class="text-light">France</p>
-        <p class="text-light">Germany</p>
-        <p class="text-light">Nertherlands</p>
-      </div>
+      <% }); %>
     </div>
   </main>
 </body>
