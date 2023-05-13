@@ -1,0 +1,49 @@
+<%- include("header"); -%>
+
+<body>
+  <main>
+    <div class="main-search-filter" role="form">
+      <div class="search">
+        <div class="icon">
+          <img
+            class="search-icon"
+            src="https://img.icons8.com/material-rounded/24/FFFFFF/search.png"
+            alt="search-icon"
+          />
+        </div>
+        <input
+          type="text"
+          class="text-light input-field"
+          placeholder="Search for a country"
+        />
+      </div>
+      <div class="filter">
+        <select name="Continents" class="drop-down-menu" id="continents-select">
+          <option value="" selected>Filter By Region</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">America</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+    </div>
+    <div class="main-section" role="main">
+      <div class="main-section-column-1">
+        <%countryData.forEach((data)=>{%>
+        <div class="row">
+          <div class="row-img-div">
+            <img class="row-img" src="<%=data.flags.png%>" />
+          </div>
+          <div class="row-text">
+            <h5 class="text-light countryName"><%=data.name%></h5>
+            <p class="text-light">Population: <%=data.population%></p>
+            <p class="text-light regionName">Region: <%=data.region%></p>
+            <p class="text-light">Capital: <%=data.capital%></p>
+          </div>
+        </div>
+        <%})%>
+      </div>
+    </div>
+  </main>
+</body>
