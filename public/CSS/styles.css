@@ -66,6 +66,10 @@ main{
     transform: translateY(-12px);
 }
 
+.row-link{
+    text-decoration: none;
+}
+
 .row{
     background-color: hsl(209, 23%, 22%);
     box-shadow: 1px 1px 40px black;
@@ -113,22 +117,83 @@ main{
 }
 
 .main-section-country{
-    margin-top: 50px;
+    margin-top: 60px;
     display: flex;
-    gap: 100px;
+    gap: 70px;
 }
 
-.main-section-country-flag-img{
+.main-section-country-img-container{
     height: 300px;
-    width: 430px;
-    background-color: white;
+    width: 450px;
 }
 
-.main-section-country-text{
-    display: flex;
-    gap: 50px;
+.main-section-country-img{
+    max-width: 100%;
+    min-width: 100%;
+    object-fit: contain;
 }
 
+.text-content{
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 0px;
+}
+
+.border-country-link{
+    color: white;
+    text-decoration: none;
+    background-color: hsl(209, 23%, 22%);
+    padding: 5px 15px;
+}
+
+.border-country-mobile{
+    display: none;
+}
+
+@media (max-width: 960px) {
+    .main-section-country{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .text-content:nth-child(2){
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
+}
+
+@media (max-width: 620px) {
+    .text-content{
+        display: grid;
+        grid-template-columns: repeat(1, max-content);
+        gap: 0px;
+    }
+
+    .main-section-country-img-container{
+        height: auto;
+        width: 70vw;
+    }
+    
+    .main-section-country-img{
+        max-width: 90%;
+        min-width: 90%;
+        object-fit: contain;
+    }
+
+    .border-country-lg{
+        display: none;
+    }
+
+    .border-country-mobile {
+        display: block;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }      
+
+    .border-country-link{
+        padding: 2px 4px;
+    }
+}
 
 @media (max-width: 930px) {
     .main-section-column-1{
@@ -179,5 +244,17 @@ main{
         display: flex;
         justify-content: space-between;
         padding: 0 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .input-field{
+        background-color: hsl(209, 23%, 22%);
+        border-style: solid;
+        border-color: hsl(209, 23%, 22%);
+        border-radius: 6px;
+        padding: 10px 80px;
+        color: white;
+        width: 30%;
     }
 }
