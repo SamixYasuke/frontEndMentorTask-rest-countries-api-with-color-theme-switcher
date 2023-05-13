@@ -1,15 +1,3 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     var selectElement = document.getElementById('continents-select');
-//     selectElement.addEventListener('change', function() {
-//       var selectedValue = selectElement.value;
-//       // Send an AJAX request to the backend
-//       var xhr = new XMLHttpRequest();
-//       xhr.open('POST', '/', true);
-//       xhr.setRequestHeader('Content-Type', 'application/json');
-//       xhr.send(JSON.stringify({ Continents: selectedValue }));
-//     });
-// });
-
 document.addEventListener('DOMContentLoaded', ()=> {
   const filter = document.querySelector("#continents-select");
   const rows = document.querySelectorAll(".row");
@@ -36,4 +24,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
       }
     })
   });
+  
+  rows.forEach((row) => {
+    row.addEventListener("click", () => {
+      const country = row.querySelector(".countryName").textContent;
+      // Redirect to another page with the country name in the URL
+      window.location.href = `/country-details/${encodeURIComponent(country)}`;
+    });
+  });    
 });
