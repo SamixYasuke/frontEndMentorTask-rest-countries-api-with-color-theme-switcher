@@ -15,11 +15,17 @@ app.get("/", (req, res)=>{
   });
 });
 
+app.get("/data", (req, res)=>{
+  res.json(countryData)
+})
 
-app.get("/country", (req, res)=>{
+app.get("/country-details/:countryName", (req, res)=>{
+  const countryName = req.params.countryName;
+  const filteredCountryName = countryData.filter(country => country.name === countryName);
+  console.log(filteredCountryName);
   res.render("country", {
-    countryData : countryData
-  });
+    country : filteredCountryName
+  })
 })
 
 app.listen(port, ()=>{
